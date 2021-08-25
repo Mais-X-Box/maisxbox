@@ -17,7 +17,6 @@ class LoadConfiguration implements ILoadConfiguration {
       Map<String, String> mapConfigsKeyValue = Map<String, String>();
 
       //If is release mode, then the secret will be fetched from Firebase Cloud Firestore.
-      await Future.delayed(Duration(seconds: 2)); //TODO retirar!
       if (kReleaseMode) {
         //Instantiate and prepare Firebase Remote Config
         await cloudFirestoreRemote.init();

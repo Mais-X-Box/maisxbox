@@ -36,7 +36,7 @@ class _LoadInitialDataState extends State<LoadInitialDataPage> {
               children: [
                 Expanded(
                   child: Center(
-                    child: LoadingComponentWithText(title: "Aguarde", subtitle: "Carregando dados iniciais"),
+                    child: LoadingComponentWithText(title: "Carregando dados"),
                   ),
                 ),
               ],
