@@ -4,14 +4,16 @@ class LocalConfigSecrets {
   static Map<String, dynamic> secrets() {
     return {
       //General
-      ConfigKeys.HEADER_BANNER_PRINCIPAL: "VALOR HEADER_BANNER_PRINCIPAL",
-      ConfigKeys.INSTAGRAM_URL: "VALOR INSTAGRAM_URL",
-      ConfigKeys.SUB_HEADER_BANNER: "VALOR SUB_HEADER_BANNER",
-      ConfigKeys.SUB_HEADER_BANNER_HYPERLINK_URL: "VALOR SUB_HEADER_BANNER_HYPERLINK_URL",
-      ConfigKeys.TWITTER_URL: "VALOR TWITTER_URL",
-      ConfigKeys.X_BOX_STORE_DEALS_WITH_GOLD: "VALOR X_BOX_STORE_DEALS_WITH_GOLD",
-      ConfigKeys.X_BOX_STORE_TITULO: "VALOR X_BOX_STORE_TITULO",
-      ConfigKeys.YOUTUBE_URL: "VALOR YOUTUBE_URL",
+      ConfigKeys.HEADER_BANNER_PRINCIPAL_URL: "https://firebasestorage.googleapis.com/v0/b/maisxbox-bob.appspot.com/o/website%2Fbanner_principal.png?alt=media&token=34f1b766-c3fa-4592-ad21-75c00e748a1b",
+      ConfigKeys.SUB_HEADER_BANNER_URL: "https://firebasestorage.googleapis.com/v0/b/maisxbox-bob.appspot.com/o/website%2Fbanner_promocao_far_cry_5.png?alt=media&token=5bc37015-bd7a-455f-8096-68a53be9ad97",
+      ConfigKeys.SUB_HEADER_BANNER_HYPERLINK_URL: "https://www.google.com.br",
+      ConfigKeys.X_BOX_STORE_DEALS_WITH_GOLD_TEXTO: "de 17 a 23 de agosto",
+      ConfigKeys.X_BOX_STORE_TITULO_TEXTO: "de 17 a 23 de agosto",
+
+      //Urls
+      ConfigKeys.TWITTER_URL: "https://twitter.com/maisxbox",
+      ConfigKeys.INSTAGRAM_URL: "https://www.instagram.com/maisxbox/",
+      ConfigKeys.YOUTUBE_URL: "https://www.youtube.com/user/DinhoPlayerBR",
     };
   }
 }

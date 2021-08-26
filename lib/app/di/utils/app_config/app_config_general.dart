@@ -6,27 +6,27 @@ class AppConfigGeneral implements IAppConfig {
   final ISecureDataRepository _secureDataRepository;
   AppConfigGeneral(this._secureDataRepository);
 
-  String? headerBannerPrincipal;
-  String? subHeaderBanner;
+  String? headerBannerPrincipalUrl;
+  String? subHeaderBannerUrl;
   String? subHeaderBannerHyperlinkUrl;
-  String? xBoxStoreDealsWithGold;
-  String? xBoxStoreTitulo;
+  String? xBoxStoreDealsWithGoldTexto;
+  String? xBoxStoreTituloTexto;
 
   @override
   Future loadSecureConfigs() async {
-    headerBannerPrincipal = await _secureDataRepository.get(ConfigKeys.HEADER_BANNER_PRINCIPAL) ?? "";
-    subHeaderBanner = await _secureDataRepository.get(ConfigKeys.SUB_HEADER_BANNER) ?? "";
+    headerBannerPrincipalUrl = await _secureDataRepository.get(ConfigKeys.HEADER_BANNER_PRINCIPAL_URL) ?? "";
+    subHeaderBannerUrl = await _secureDataRepository.get(ConfigKeys.SUB_HEADER_BANNER_URL) ?? "";
     subHeaderBannerHyperlinkUrl = await _secureDataRepository.get(ConfigKeys.SUB_HEADER_BANNER_HYPERLINK_URL) ?? "";
-    xBoxStoreDealsWithGold = await _secureDataRepository.get(ConfigKeys.X_BOX_STORE_DEALS_WITH_GOLD) ?? "";
-    xBoxStoreTitulo = await _secureDataRepository.get(ConfigKeys.X_BOX_STORE_TITULO) ?? "";
+    xBoxStoreDealsWithGoldTexto = await _secureDataRepository.get(ConfigKeys.X_BOX_STORE_DEALS_WITH_GOLD_TEXTO) ?? "";
+    xBoxStoreTituloTexto = await _secureDataRepository.get(ConfigKeys.X_BOX_STORE_TITULO_TEXTO) ?? "";
   }
 
   @override
   String toString() {
-    return "${headerBannerPrincipal.toString()} \n"
-        "${subHeaderBanner.toString()} \n"
+    return "${headerBannerPrincipalUrl.toString()} \n"
+        "${subHeaderBannerUrl.toString()} \n"
         "${subHeaderBannerHyperlinkUrl.toString()} \n"
-        "${xBoxStoreDealsWithGold.toString()} \n"
-        "${xBoxStoreTitulo.toString()} \n";
+        "${xBoxStoreDealsWithGoldTexto.toString()} \n"
+        "${xBoxStoreTituloTexto.toString()} \n";
   }
 }
