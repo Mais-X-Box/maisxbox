@@ -3,7 +3,9 @@ import 'package:maisxbox/app/di/i_di_feature.dart';
 import 'package:maisxbox/crosscutting/firebase/cloud_firestore/interfaces/i_cloud_firestore_remote.dart';
 import 'package:maisxbox/domain/repositories/i_secure_data_repository.dart';
 import 'package:maisxbox/domain/usecases/configuration/i_load_configuration.dart';
+import 'package:maisxbox/domain/usecases/sign_in/i_sign_in_anonymous.dart';
 import 'package:maisxbox/services/config/load_configuration.dart';
+import 'package:maisxbox/services/sign_in/sign_in_anonymous.dart';
 
 class DIServices implements IDIFeature {
   @override
@@ -14,5 +16,7 @@ class DIServices implements IDIFeature {
           secureDataRepository: getIt.get<ISecureDataRepository>(),
           cloudFirestoreRemote: getIt.get<ICloudFirestoreRemote>(),
         ));
+
+    getIt.registerLazySingleton<ISignInAnonymous>(() => SignInAnonymous());
   }
 }

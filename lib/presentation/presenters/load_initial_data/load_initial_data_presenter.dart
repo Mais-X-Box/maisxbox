@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:maisxbox/app/di/utils/app_config/app_config.dart';
 import 'package:maisxbox/domain/repositories/i_secure_data_repository.dart';
 import 'package:maisxbox/domain/usecases/configuration/i_load_configuration.dart';
+import 'package:maisxbox/domain/usecases/sign_in/i_sign_in_anonymous.dart';
 import 'package:maisxbox/presentation/ui/utils/navigator/i_navigation.dart';
 import 'package:maisxbox/presentation/ui/utils/navigator/navigation_routes.dart';
 
@@ -10,22 +11,22 @@ class LoadInitialDataState {}
 
 class LoadInitialDataPresenter {
   final INavigation _navigation = GetIt.instance.get<INavigation>();
+  final ISignInAnonymous signInAnonymous;
   final ILoadConfiguration loadConfiguration;
   //final ILoadLocalUser loadLocalUser;
   //final ISetAnalyticsUserIdentification setAnalyticsUserIdentification;
 
   var _controller = StreamController<LoadInitialDataState>.broadcast();
 
-  LoadInitialDataPresenter({required this.loadConfiguration});
+  LoadInitialDataPresenter({required this.signInAnonymous, required this.loadConfiguration});
 
   void dispose() {
     _controller.close();
   }
 
   Future<void> loadData() async {
-    //await Future.delayed(Duration(seconds: 1));
-
     try {
+      await signInAnonymous.execute();
       //loadTranslation.execute();
       //await initLocalDatabase.execute();
 
