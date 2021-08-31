@@ -39,7 +39,7 @@ class LoadingComponentWithText extends StatelessWidget {
                   if (title?.isNotEmpty == true)
                     Padding(
                       padding: EdgeInsets.only(bottom: 15),
-                      child: Text(title ?? "", style: AppThemeText.h2Plus(color: AppThemeColors.brown), textAlign: TextAlign.center),
+                      child: Text(title ?? "", style: AppThemeText.h2(color: AppThemeColors.brown), textAlign: TextAlign.center),
                     ),
                   if (subtitle?.isNotEmpty == true) Text(subtitle ?? "", style: AppThemeText.message(color: subtitleColor ?? AppThemeColors.brownLight).copyWith(fontSize: this.subtitleSize), textAlign: TextAlign.center),
                 ],

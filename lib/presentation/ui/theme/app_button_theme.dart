@@ -5,7 +5,7 @@ import 'package:maisxbox/presentation/ui/theme/app_theme_colors.dart';
 class AppButtonTheme {
   static ButtonStyle makeButtonStylePrimary({TextStyle? textStyle}) {
     ButtonStyle buttonStyle = TextButton.styleFrom(
-      backgroundColor: AppThemeColors.yellow,
+      backgroundColor: AppThemeColors.green,
       primary: AppThemeColors.white,
       onSurface: AppThemeColors.brownLight, //Text color when the button is disabled
       minimumSize: Size(88, 52),
@@ -13,7 +13,7 @@ class AppButtonTheme {
       padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8))),
     ).copyWith(
-      backgroundColor: _setButtonBackgroundColor(enabledColor: AppThemeColors.yellow, disabledColor: AppThemeColors.yellowDisabled),
+      backgroundColor: _setButtonBackgroundColor(enabledColor: AppThemeColors.green, disabledColor: AppThemeColors.greenDisabled),
       overlayColor: _setButtonOverlayColor(enabledColor: AppThemeColors.brown),
     );
 
@@ -39,7 +39,7 @@ class AppButtonTheme {
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8))),
     ).copyWith(
       backgroundColor: _setButtonBackgroundColor(enabledColor: Colors.transparent, disabledColor: Colors.transparent),
-      overlayColor: _setButtonOverlayColor(enabledColor: overlayColor ?? AppThemeColors.yellow),
+      overlayColor: _setButtonOverlayColor(enabledColor: overlayColor ?? AppThemeColors.green),
       side: _setButtonBorderSide(enabledColor: borderColor ?? AppThemeColors.white, disabledColor: borderDisabledColor ?? AppThemeColors.brownLight, borderWidth: 1), //Border
     );
 

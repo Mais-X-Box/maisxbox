@@ -53,32 +53,32 @@ flutter:
   #   - lib/presentation/ui/assets/images/logos/
   #   - lib/presentation/ui/assets/images/icons/
 
-  # fonts:
-  #   - family: CircularStd-Black
-  #     fonts:
-  #       - asset: lib/presentation/ui/assets/fonts/CircularStd-Black.otf
-  #       - asset: lib/presentation/ui/assets/fonts/CircularStd-BlackItalic.otf
-  #         style: italic
-  #       - asset: lib/presentation/ui/assets/fonts/CircularStd-Black.otf
-  #         weight: 700
-  #   - family: CircularStd-Bold
-  #     fonts:
-  #       - asset: lib/presentation/ui/assets/fonts/CircularStd-Bold.otf
-  #       - asset: lib/presentation/ui/assets/fonts/CircularStd-BoldItalic.otf
-  #         style: italic
-  #       - asset: lib/presentation/ui/assets/fonts/CircularStd-Bold.otf
-  #         weight: 700
-  #   - family: CircularStd-Book
-  #     fonts:
-  #       - asset: lib/presentation/ui/assets/fonts/CircularStd-Book.otf
-  #       - asset: lib/presentation/ui/assets/fonts/CircularStd-BookItalic.otf
-  #         style: italic
-  #       - asset: lib/presentation/ui/assets/fonts/CircularStd-Book.otf
-  #         weight: 700
-  #   - family: CircularStd-Medium
-  #     fonts:
-  #       - asset: lib/presentation/ui/assets/fonts/CircularStd-Medium.otf
-  #       - asset: lib/presentation/ui/assets/fonts/CircularStd-MediumItalic.otf
-  #         style: italic
-  #       - asset: lib/presentation/ui/assets/fonts/CircularStd-Medium.otf
-  #         weight: 700
+  fonts:
+    - family: HelveticaNowDisplay-Light
+      fonts:
+        - asset: lib/presentation/ui/assets/fonts/HelveticaNowDisplay-Light.ttf
+        - asset: lib/presentation/ui/assets/fonts/HelveticaNowDisplay-LightIta.ttf
+          style: italic
+        - asset: lib/presentation/ui/assets/fonts/HelveticaNowDisplay-Light.ttf
+          weight: 700
+    - family: HelveticaNowDisplay-Regular
+      fonts:
+        - asset: lib/presentation/ui/assets/fonts/HelveticaNowDisplay-Regular.ttf
+        - asset: lib/presentation/ui/assets/fonts/HelveticaNowDisplay-RegIta.ttf
+          style: italic
+        - asset: lib/presentation/ui/assets/fonts/HelveticaNowDisplay-Regular.ttf
+          weight: 700
+    - family: HelveticaNowDisplay-Medium
+      fonts:
+        - asset: lib/presentation/ui/assets/fonts/HelveticaNowDisplay-Medium.ttf
+        - asset: lib/presentation/ui/assets/fonts/HelveticaNowDisplay-MedIta.ttf
+          style: italic
+        - asset: lib/presentation/ui/assets/fonts/HelveticaNowDisplay-Medium.ttf
+          weight: 700
+    - family: HelveticaNowDisplay-Bold
+      fonts:
+        - asset: lib/presentation/ui/assets/fonts/HelveticaNowDisplay-Bold.ttf
+        - asset: lib/presentation/ui/assets/fonts/HelveticaNowDisplay-BoldIta.ttf
+          style: italic
+        - asset: lib/presentation/ui/assets/fonts/HelveticaNowDisplay-Bold.ttf
+          weight: 700

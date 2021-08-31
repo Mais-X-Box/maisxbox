@@ -47,11 +47,12 @@ class App extends StatelessWidget {
     return GestureDetector(
       onTap: () => keyboardManager.hideKeyboard(context),
       child: MaterialApp(
-        title: 'Yes4Track',
+        title: 'Mais Xbox',
         debugShowCheckedModeBanner: false,
-        theme: _appTheme.copyWith(colorScheme: _appTheme.colorScheme.copyWith(secondary: AppThemeColors.yellow)),
+        theme: _appTheme.copyWith(colorScheme: _appTheme.colorScheme.copyWith(secondary: AppThemeColors.green)),
         navigatorKey: navigation.navigatorKey,
-        initialRoute: NavigationRoutes.root,
+        //initialRoute: NavigationRoutes.root,//TODO voltar
+        initialRoute: NavigationRoutes.home,
         onGenerateRoute: navigation.pagesRouteFactory(),
         navigatorObservers: (kIsWeb) ? [FirebaseAnalyticsObserver(analytics: AppAnalytics.instance.firebaseAnalytics)] : [],
       ),
