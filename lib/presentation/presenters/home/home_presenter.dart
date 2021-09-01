@@ -31,13 +31,11 @@ abstract class _HomePresenterBase extends MobxBaseStore with Store {
 
   Future<void> loadPartners() async {
     var teste = await loadAllPartners.execute();
-    await Future.delayed(Duration(seconds: 3));
     print(teste);
   }
 
   Future<void> loadGames() async {
     var teste = await loadAllGames.execute();
-    await Future.delayed(Duration(seconds: 8));
     print(teste);
   }
 }
