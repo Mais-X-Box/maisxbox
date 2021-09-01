@@ -1,16 +1,20 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:maisxbox/app/di/utils/app_config/app_config.dart';
-import 'package:maisxbox/app/di/utils/app_config/app_config_general.dart';
+import 'package:maisxbox/presentation/presenters/home/home_presenter.dart';
 import 'package:maisxbox/presentation/ui/theme/app_theme.dart';
 import 'package:maisxbox/presentation/ui/theme/app_theme_colors.dart';
 import 'package:maisxbox/presentation/ui/theme/app_theme_text.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final HomePresenter presenter;
+
+  HomePage(this.presenter);
 
   @override
   Widget build(BuildContext context) {
+    presenter.loadData();
+
     return Scaffold(
       backgroundColor: AppThemeColors.white,
       body: SingleChildScrollView(
@@ -26,8 +30,7 @@ class HomePage extends StatelessWidget {
                     end: Alignment.bottomCenter,
                   ),
                 ),
-                //Image.network(AppConfig.general.headerBannerPrincipalUrl ?? "", fit: BoxFit.cover),//TODO voltar
-                child: Image.network("https://firebasestorage.googleapis.com/v0/b/maisxbox-bob.appspot.com/o/website%2Fbanner_principal.png?alt=media&token=34f1b766-c3fa-4592-ad21-75c00e748a1b", fit: BoxFit.contain),
+                child: CachedNetworkImage(imageUrl: AppConfig.general.headerBannerPrincipalUrl ?? "", fit: BoxFit.cover),
               ),
               Container(
                 width: double.infinity,
@@ -43,7 +46,6 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                     Text("Segue nóis:", style: AppThemeText.h3(color: AppThemeColors.green)),
-                    //Text("Segue nóis:"),
                   ],
                 ),
               ),
@@ -56,9 +58,7 @@ class HomePage extends StatelessWidget {
                   child: Text("Confira as ofertas da semana oficiais da Microsoft para o seu Xbox:", style: AppThemeText.h1()),
                 ),
               ),
-
-              //CachedNetworkImage(imageUrl: AppConfig.general.subHeaderBannerUrl ?? ""),//TODO voltar
-              CachedNetworkImage(imageUrl: "https://firebasestorage.googleapis.com/v0/b/maisxbox-bob.appspot.com/o/website%2Fbanner_promocao_far_cry_5.png?alt=media&token=5bc37015-bd7a-455f-8096-68a53be9ad97"),
+              CachedNetworkImage(imageUrl: AppConfig.general.subHeaderBannerUrl ?? ""),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

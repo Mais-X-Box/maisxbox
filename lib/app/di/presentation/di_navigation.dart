@@ -6,7 +6,6 @@ import 'package:maisxbox/presentation/ui/pages/load_initial_data/load_initial_da
 import 'package:maisxbox/presentation/ui/utils/navigator/i_navigation.dart';
 import 'package:maisxbox/presentation/ui/utils/navigator/navigation.dart';
 import 'package:maisxbox/presentation/ui/utils/navigator/navigation_routes.dart';
-//import 'package:maisxbox/presentation/ui/utils/navigator/navigation_routes.dart';
 
 class DINavigation implements IDIFeature {
   @override

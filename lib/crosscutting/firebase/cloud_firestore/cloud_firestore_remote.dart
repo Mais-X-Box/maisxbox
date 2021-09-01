@@ -14,7 +14,7 @@ class CloudFirestoreRemote implements ICloudFirestoreRemote {
   @override
   Future<List<Map<String, dynamic>>> getAllFromCollection(String collection) async {
     QuerySnapshot<Map<String, dynamic>> querySnapshot = await _firestore.collection(collection).get();
-    List<Map<String, dynamic>> result = querySnapshot.docs.map((doc) => doc.data()).toList();
+    List<Map<String, dynamic>> result = querySnapshot.docs.map((doc) => doc.data()..addAll({"id": doc.id})).toList();
     return result;
   }
 }

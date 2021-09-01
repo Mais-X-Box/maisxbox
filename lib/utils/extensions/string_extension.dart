@@ -19,4 +19,15 @@ extension ParseNumbers on String? {
     } else
       return "";
   }
+
+  bool? toBool() {
+    if (this == null) return null;
+
+    if (this?.toLowerCase() == "1") return true;
+    if (this?.toLowerCase() == "sim") return true;
+    if (this?.toLowerCase() == "yes") return true;
+    if (this?.toLowerCase() == "true") return true;
+
+    return false;
+  }
 }

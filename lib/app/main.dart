@@ -51,8 +51,7 @@ class App extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: _appTheme.copyWith(colorScheme: _appTheme.colorScheme.copyWith(secondary: AppThemeColors.green)),
         navigatorKey: navigation.navigatorKey,
-        //initialRoute: NavigationRoutes.root,//TODO voltar
-        initialRoute: NavigationRoutes.home,
+        initialRoute: NavigationRoutes.root,
         onGenerateRoute: navigation.pagesRouteFactory(),
         navigatorObservers: (kIsWeb) ? [FirebaseAnalyticsObserver(analytics: AppAnalytics.instance.firebaseAnalytics)] : [],
       ),
