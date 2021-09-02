@@ -1,20 +1,32 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:maisxbox/app/di/utils/app_config/app_config.dart';
+import 'package:maisxbox/domain/entities/game/game_entity.dart';
+import 'package:maisxbox/domain/entities/partner/partner_entity.dart';
 import 'package:maisxbox/presentation/presenters/home/home_presenter.dart';
+import 'package:maisxbox/presentation/ui/components/loading_component.dart';
 import 'package:maisxbox/presentation/ui/theme/app_theme.dart';
 import 'package:maisxbox/presentation/ui/theme/app_theme_colors.dart';
 import 'package:maisxbox/presentation/ui/theme/app_theme_text.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   final HomePresenter presenter;
-
   HomePage(this.presenter);
 
   @override
-  Widget build(BuildContext context) {
-    presenter.loadData();
+  _HomePageState createState() => _HomePageState();
+}
 
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    widget.presenter.loadData();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppThemeColors.white,
       body: SingleChildScrollView(
@@ -100,38 +112,25 @@ class HomePage extends StatelessWidget {
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(top: 20),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Expanded(child: Text("Jogo", style: AppThemeText.bodyP())),
-                                          Text("De", style: AppThemeText.bodyP()),
-                                          Text("Por", style: AppThemeText.bodyP(fontWeight: FontWeight.bold)),
-                                          Text("Link", style: AppThemeText.bodyP()),
-                                        ],
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.only(top: 10),
-                                        child: Row(
-                                          children: [
-                                            Expanded(child: Text("Asseto Corsa", style: AppThemeText.bodyP())),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(horizontal: 25),
-                                              child: Text("R\$ 59,00", style: AppThemeText.bodyP()),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(horizontal: 25),
-                                              child: Text("R\$ 11,80", style: AppThemeText.bodyP(fontWeight: FontWeight.bold)),
-                                            ),
-                                            Container(
-                                              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-                                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: AppThemeColors.green),
-                                              child: Text("Comprar", style: AppThemeText.buttonLabel(fontWeight: FontWeight.bold), textAlign: TextAlign.center),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
+                                  child: Observer(
+                                    builder: (_) {
+                                      return this.widget.presenter.homeViewModel.isGamesLoading
+                                          ? LoadingComponent()
+                                          : ListView.builder(
+                                              physics: BouncingScrollPhysics(),
+                                              shrinkWrap: true,
+                                              itemCount: this.widget.presenter.homeViewModel.games.length,
+                                              itemBuilder: (context, index) {
+                                                return Column(
+                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                  children: [
+                                                    if (index == 0) Padding(padding: EdgeInsets.only(bottom: 10), child: makeGameHeader()),
+                                                    makeGameLine(this.widget.presenter.homeViewModel.games[index]),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                    },
                                   ),
                                 ),
                               ],
@@ -142,7 +141,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 132),
+                    padding: EdgeInsets.only(top: 120),
                     width: MediaQuery.of(context).size.width * 0.18,
                     color: Colors.red,
                     child: Column(
@@ -157,14 +156,19 @@ class HomePage extends StatelessWidget {
                           ),
                           child: Text("Parceiros", style: AppThemeText.buttonLabel(), textAlign: TextAlign.center),
                         ),
-                        Container(
-                          width: double.infinity,
-                          height: 200,
-                          margin: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: AppThemeColors.black,
-                          ),
+                        Observer(
+                          builder: (_) {
+                            return this.widget.presenter.homeViewModel.isPartnersLoading
+                                ? LoadingComponent()
+                                : ListView.builder(
+                                    physics: BouncingScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemCount: this.widget.presenter.homeViewModel.partners.length,
+                                    itemBuilder: (context, index) {
+                                      return makePartnerCard(this.widget.presenter.homeViewModel.partners[index]);
+                                    },
+                                  );
+                          },
                         ),
                       ],
                     ),
@@ -176,5 +180,58 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget makePartnerCard(PartnerEntity? partner) {
+    return Container(
+      width: double.infinity,
+      height: 200,
+      margin: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        color: AppThemeColors.black,
+      ),
+      child: Text(partner?.name ?? "", style: TextStyle(color: Colors.white)),
+    );
+  }
+
+  Widget makeGameLine(GameEntity? game) {
+    return _makeGameLineBase(
+      name: game?.name,
+      priceOriginal: "R\$ ${game?.priceOriginal?.toStringAsFixed(2)}",
+      priceFinal: "R\$ ${game?.priceFinal?.toStringAsFixed(2)}",
+      buy: "Comprar",
+    );
+  }
+
+  Widget _makeGameLineBase({required String? name, required String? priceOriginal, required String? priceFinal, required String? buy, bool isHeader = false}) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Row(
+        children: [
+          Expanded(child: Text(name ?? "", style: AppThemeText.bodyP(), overflow: TextOverflow.ellipsis)),
+          Container(
+            width: 150,
+            padding: EdgeInsets.symmetric(horizontal: 25),
+            child: Text(priceOriginal ?? "", style: AppThemeText.bodyP(), textAlign: TextAlign.center),
+          ),
+          Container(
+            width: 150,
+            padding: EdgeInsets.symmetric(horizontal: 25),
+            child: Text(priceFinal ?? "", style: AppThemeText.bodyP(fontWeight: FontWeight.bold), textAlign: TextAlign.center),
+          ),
+          Container(
+            width: 120,
+            padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+            decoration: isHeader ? null : BoxDecoration(borderRadius: BorderRadius.circular(30), color: AppThemeColors.green),
+            child: Text(buy ?? "", style: AppThemeText.buttonLabel(fontWeight: isHeader ? null : FontWeight.bold), textAlign: TextAlign.center),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget makeGameHeader() {
+    return _makeGameLineBase(name: "Jogo", priceOriginal: "De", priceFinal: "Por", buy: "Link", isHeader: true);
   }
 }

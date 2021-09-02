@@ -9,7 +9,7 @@ class LoadAllPartners implements ILoadAllPartners {
   final ITranslatePartner translatePartner;
   LoadAllPartners({required this.cloudFirestoreRemote, required this.translatePartner});
 
-  Future<List<PartnerEntity?>?> execute() async {
+  Future<List<PartnerEntity>?> execute() async {
     List<Map<String, dynamic>> partnersRemote = await cloudFirestoreRemote.getAllFromCollection(CloudFirestoreCollections.partners);
     if (partnersRemote.length > 0) {
       var parterEntityList = partnersRemote.map((partnerRemote) => translatePartner.translateGetPartnerToPartnerEntity(partnerRemote)).toList();

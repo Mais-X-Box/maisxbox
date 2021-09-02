@@ -9,7 +9,7 @@ class LoadAllGames implements ILoadAllGames {
   final ITranslateGame translateGame;
   LoadAllGames({required this.cloudFirestoreRemote, required this.translateGame});
 
-  Future<List<GameEntity?>?> execute() async {
+  Future<List<GameEntity>?> execute() async {
     List<Map<String, dynamic>> gamesRemote = await cloudFirestoreRemote.getAllFromCollection(CloudFirestoreCollections.games);
     if (gamesRemote.length > 0) {
       var gameEntityList = gamesRemote.map((partnerRemote) => translateGame.translateGetGameToGameEntity(partnerRemote)).toList();
