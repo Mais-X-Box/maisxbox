@@ -1,4 +1,7 @@
 import 'dart:async';
+import 'package:get_it/get_it.dart';
+import 'package:maisxbox/presentation/ui/utils/navigator/i_navigation.dart';
+import 'package:maisxbox/presentation/ui/utils/navigator/navigation_routes.dart';
 import 'package:mobx/mobx.dart';
 import 'package:maisxbox/domain/usecases/game/i_load_all_games.dart';
 import 'package:maisxbox/domain/usecases/partner/i_load_all_partners.dart';
@@ -10,6 +13,7 @@ part 'home_presenter.g.dart';
 class HomePresenter = _HomePresenterBase with _$HomePresenter;
 
 abstract class _HomePresenterBase extends MobxBaseStore with Store {
+  final INavigation _navigation = GetIt.instance.get<INavigation>();
   final ILoadAllPartners loadAllPartners;
   final ILoadAllGames loadAllGames;
   late final HomeViewModel homeViewModel;
@@ -54,5 +58,10 @@ abstract class _HomePresenterBase extends MobxBaseStore with Store {
     } finally {
       this.homeViewModel.setIsGamesLoading(false);
     }
+  }
+
+  Future<void> reset() async {
+    _navigation.resetNavigationAndNavigateTo(NavigationRoutes.home);
+    await loadData();
   }
 }

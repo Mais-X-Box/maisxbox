@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:maisxbox/presentation/presenters/home/home_presenter.dart';
 import 'package:maisxbox/presentation/ui/pages/home/components/home_page_menu_item.dart';
 import 'package:maisxbox/presentation/ui/pages/home/components/home_page_menu_social.dart';
 import 'package:maisxbox/presentation/ui/theme/theme.dart';
 
 class HomePageMenu extends StatelessWidget {
-  const HomePageMenu();
+  final HomePresenter presenter;
+  const HomePageMenu({required this.presenter});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class HomePageMenu extends StatelessWidget {
         children: [
           Row(
             children: [
-              HomePageMenuItem(text: "Início", width: 30, isSelected: false, applySpace: false),
+              HomePageMenuItem(text: "Início", width: 30, isSelected: false, applySpace: false, onPressed: () => presenter.reset()),
               //HomePageMenuItem(text: "Contato", width: 45, hyperlinkUrl: Uri(scheme: 'mailto', path: 'email@gmail.com', query: 'subject=Olá!&body=Em que posso te ajudar?').toString()),
             ],
           ),
