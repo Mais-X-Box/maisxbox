@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:maisxbox/domain/entities/game/game_entity.dart';
 import 'package:maisxbox/presentation/presenters/home/home_presenter.dart';
 import 'package:maisxbox/presentation/ui/components/loading_component.dart';
+import 'package:maisxbox/presentation/ui/pages/home/list_blocks/home_page_list_block_base_game_element.dart';
 import 'package:maisxbox/utils/extensions/format_double_extension.dart';
 import 'package:maisxbox/presentation/ui/theme/theme.dart';
 import 'package:mobx/mobx.dart';
@@ -47,7 +48,6 @@ class HomePageListBlockBase extends StatelessWidget {
                       child: ListView.builder(
                         physics: BouncingScrollPhysics(),
                         shrinkWrap: true,
-                        //itemCount: this.presenter.homeViewModel.games.length,
                         itemCount: this.list.length,
                         itemBuilder: (context, index) {
                           return Column(
@@ -67,37 +67,10 @@ class HomePageListBlockBase extends StatelessWidget {
     );
   }
 
-  Widget _makeGameLineBase({required String? name, required String? priceOriginal, required String? priceFinal, required String? buy, bool isHeader = false}) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: Row(
-        children: [
-          Expanded(child: Text(name ?? "", style: AppThemeText.bodyP(), overflow: TextOverflow.ellipsis)),
-          Container(
-            width: 150,
-            padding: EdgeInsets.symmetric(horizontal: 25),
-            child: Text(priceOriginal ?? "", style: AppThemeText.bodyP(), textAlign: TextAlign.center),
-          ),
-          Container(
-            width: 150,
-            padding: EdgeInsets.symmetric(horizontal: 25),
-            child: Text(priceFinal ?? "", style: AppThemeText.bodyP(fontWeight: FontWeight.bold), textAlign: TextAlign.center),
-          ),
-          Container(
-            width: 120,
-            padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-            decoration: isHeader ? null : BoxDecoration(borderRadius: BorderRadius.circular(30), color: AppThemeColors.green),
-            child: Text(buy ?? "", style: AppThemeText.buttonLabel(fontWeight: isHeader ? null : FontWeight.bold), textAlign: TextAlign.center),
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget makeGameLine(GameEntity? game) {
     Locale localePtBR = Locale.fromSubtags(languageCode: 'pt', countryCode: 'BR');
 
-    return _makeGameLineBase(
+    return HomePageListBlockBaseGameElement(
       name: game?.name,
       priceOriginal: game?.priceOriginal?.formatCurrencyValue(localePtBR),
       priceFinal: game?.priceFinal?.formatCurrencyValue(localePtBR),
@@ -106,19 +79,6 @@ class HomePageListBlockBase extends StatelessWidget {
   }
 
   Widget makeGameHeader() {
-    return _makeGameLineBase(name: "Jogo", priceOriginal: "De", priceFinal: "Por", buy: "Link", isHeader: true);
-  }
-
-  String formatCurrencyValue(double? valor) {
-    Locale currentLocale = Locale.fromSubtags(languageCode: 'pt', countryCode: 'BR');
-    if (valor == null) return "";
-
-    try {
-      final formatter = NumberFormat.simpleCurrency(locale: currentLocale.languageCode);
-      String totalValueFormatted = formatter.format(valor);
-      return totalValueFormatted;
-    } catch (e) {
-      return this.toString();
-    }
+    return HomePageListBlockBaseGameElement(name: "Jogo", priceOriginal: "De", priceFinal: "Por", buy: "Link", isHeader: true);
   }
 }

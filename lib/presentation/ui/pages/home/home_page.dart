@@ -7,6 +7,7 @@ import 'package:maisxbox/presentation/ui/pages/home/components/home_page_sub_hea
 import 'package:maisxbox/presentation/ui/pages/home/list_blocks/home_page_list_block_deals_with_gold.dart';
 import 'package:maisxbox/presentation/ui/pages/home/list_blocks/home_page_list_block_xbox_store.dart';
 import 'package:maisxbox/presentation/ui/theme/app_theme_colors.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'partner/home_page_partners.dart';
 
 class HomePage extends StatefulWidget {
