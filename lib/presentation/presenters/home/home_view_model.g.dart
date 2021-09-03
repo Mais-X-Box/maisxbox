@@ -9,6 +9,23 @@ part of 'home_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$HomeViewModel on _HomeViewModelBase, Store {
+  Computed<ObservableList<GameEntity?>>? _$gamesXboxStoreComputed;
+
+  @override
+  ObservableList<GameEntity?> get gamesXboxStore =>
+      (_$gamesXboxStoreComputed ??= Computed<ObservableList<GameEntity?>>(
+              () => super.gamesXboxStore,
+              name: '_HomeViewModelBase.gamesXboxStore'))
+          .value;
+  Computed<ObservableList<GameEntity?>>? _$gamesDealsWithGoldComputed;
+
+  @override
+  ObservableList<GameEntity?> get gamesDealsWithGold =>
+      (_$gamesDealsWithGoldComputed ??= Computed<ObservableList<GameEntity?>>(
+              () => super.gamesDealsWithGold,
+              name: '_HomeViewModelBase.gamesDealsWithGold'))
+          .value;
+
   final _$isPartnersLoadingAtom =
       Atom(name: '_HomeViewModelBase.isPartnersLoading');
 
@@ -28,13 +45,13 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
   final _$partnersAtom = Atom(name: '_HomeViewModelBase.partners');
 
   @override
-  List<PartnerEntity?> get partners {
+  ObservableList<PartnerEntity?> get partners {
     _$partnersAtom.reportRead();
     return super.partners;
   }
 
   @override
-  set partners(List<PartnerEntity?> value) {
+  set partners(ObservableList<PartnerEntity?> value) {
     _$partnersAtom.reportWrite(value, super.partners, () {
       super.partners = value;
     });
@@ -123,7 +140,9 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
 isPartnersLoading: ${isPartnersLoading},
 partners: ${partners},
 isGamesLoading: ${isGamesLoading},
-games: ${games}
+games: ${games},
+gamesXboxStore: ${gamesXboxStore},
+gamesDealsWithGold: ${gamesDealsWithGold}
     ''';
   }
 }

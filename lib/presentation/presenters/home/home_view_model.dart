@@ -1,8 +1,8 @@
 import 'package:maisxbox/domain/entities/game/game_entity.dart';
 import 'package:maisxbox/domain/entities/partner/partner_entity.dart';
 import 'package:maisxbox/presentation/presenters/mobx_base_store.dart';
-
 import 'package:mobx/mobx.dart';
+
 part 'home_view_model.g.dart';
 
 class HomeViewModel = _HomeViewModelBase with _$HomeViewModel;
@@ -17,14 +17,12 @@ abstract class _HomeViewModelBase extends MobxBaseStore with Store {
   setIsPartnersLoading(value) => isPartnersLoading = value;
 
   @observable
-  List<PartnerEntity?> partners = [];
-  //ObservableList<PartnerEntity?> partners = ObservableList<PartnerEntity>();
+  ObservableList<PartnerEntity?> partners = ObservableList<PartnerEntity>();
 
   @action
-  void setPartnerList(List<PartnerEntity> value) {
-    this.partners.clear();
-    this.partners.addAll(value.toList());
-  }
+  void setPartnerList(List<PartnerEntity> value) => this.partners
+    ..clear()
+    ..addAll(value.toList());
 
   @observable
   bool isGamesLoading = false;
@@ -35,12 +33,14 @@ abstract class _HomeViewModelBase extends MobxBaseStore with Store {
   @observable
   ObservableList<GameEntity?> games = ObservableList<GameEntity>();
 
+  @computed
+  ObservableList<GameEntity?> get gamesXboxStore => ObservableList.of(this.games.where((element) => element?.groupXboxStore == true).toList());
+
+  @computed
+  ObservableList<GameEntity?> get gamesDealsWithGold => ObservableList.of(this.games.where((element) => element?.groupDealsWithGold == true).toList());
+
   @action
-  void setGameList(List<GameEntity> value) {
-    this.games.clear();
-    this.games.addAll(value.toList());
-  }
-  // void setGameList(List<GameEntity> value) => this.games
-  //   ..clear()
-  //   ..addAll(value);
+  void setGameList(List<GameEntity> value) => this.games
+    ..clear()
+    ..addAll(value.toList());
 }

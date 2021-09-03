@@ -35,6 +35,7 @@ abstract class _HomePresenterBase extends MobxBaseStore with Store {
   Future<void> loadPartners() async {
     try {
       this.homeViewModel.setIsPartnersLoading(true);
+      await Future.delayed(Duration(seconds: 2));
       var partners = await loadAllPartners.execute();
       this.homeViewModel.setPartnerList(partners ?? []);
     } catch (e) {
