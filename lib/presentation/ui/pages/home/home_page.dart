@@ -28,21 +28,21 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppThemeColors.white,
-      body: Column(
-        children: [
-          Stack(
-            children: [
-              Container(
-                width: double.infinity,
-                constraints: BoxConstraints(maxHeight: 388.5),
-                margin: EdgeInsets.only(top: 25),
-                color: AppThemeColors.black,
-              ),
-              Center(
-                child: Container(
-                  alignment: Alignment.topCenter,
-                  constraints: BoxConstraints(maxWidth: 1000),
-                  child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                Container(
+                  width: double.infinity,
+                  constraints: BoxConstraints(maxHeight: 388.5),
+                  margin: EdgeInsets.only(top: 25),
+                  color: AppThemeColors.black,
+                ),
+                Center(
+                  child: Container(
+                    alignment: Alignment.topCenter,
+                    constraints: BoxConstraints(maxWidth: 1000),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -79,10 +79,10 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
