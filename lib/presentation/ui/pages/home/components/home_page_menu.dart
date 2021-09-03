@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:maisxbox/presentation/ui/pages/home/components/home_page_menu_item.dart';
+import 'package:maisxbox/presentation/ui/pages/home/components/home_page_menu_social.dart';
 import 'package:maisxbox/presentation/ui/theme/theme.dart';
 
 class HomePageMenu extends StatelessWidget {
@@ -9,17 +11,17 @@ class HomePageMenu extends StatelessWidget {
     return Container(
       width: double.infinity,
       color: AppThemeColors.black,
-      padding: AppTheme.defaultPaddingHorizontal.copyWith(bottom: 35),
+      padding: AppTheme.defaultPaddingHorizontal.copyWith(bottom: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
-              Text("Início", style: AppThemeText.h3(color: AppThemeColors.white)),
-              Text("Contato", style: AppThemeText.h3(color: AppThemeColors.white)),
+              HomePageMenuItem(text: "Início", width: 30, isSelected: false, applySpace: false),
+              //HomePageMenuItem(text: "Contato", width: 45, hyperlinkUrl: Uri(scheme: 'mailto', path: 'email@gmail.com', query: 'subject=Olá!&body=Em que posso te ajudar?').toString()),
             ],
           ),
-          Text("Segue nóis:", style: AppThemeText.h3(color: AppThemeColors.green)),
+          HomePageMenuSocial(),
         ],
       ),
     );

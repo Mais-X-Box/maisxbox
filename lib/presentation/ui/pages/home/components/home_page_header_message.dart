@@ -7,12 +7,12 @@ class HomePageHeaderMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 10),
+      padding: EdgeInsets.symmetric(vertical: 13),
       width: double.infinity,
       color: Colors.white,
       child: Padding(
         padding: AppTheme.defaultPaddingHorizontal,
-        child: Text("Confira as ofertas da semana oficiais da Microsoft para o seu Xbox:", style: AppThemeText.h1()),
+        child: Text("Confira as ofertas da semana oficiais da Microsoft para o seu Xbox:", style: AppThemeText.h2()),
       ),
     );
   }

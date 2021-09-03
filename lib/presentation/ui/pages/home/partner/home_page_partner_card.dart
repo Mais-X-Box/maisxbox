@@ -22,7 +22,7 @@ class HomePagePartnerCard extends StatelessWidget {
         ),
       ),
       onTap: () async {
-        if (await canLaunch(partner?.hyperlinkUrl ?? "")) {
+        if ((partner?.hyperlinkUrl ?? "").isNotEmpty && await canLaunch(partner?.hyperlinkUrl ?? "")) {
           await launch(partner?.hyperlinkUrl ?? "");
         }
       },

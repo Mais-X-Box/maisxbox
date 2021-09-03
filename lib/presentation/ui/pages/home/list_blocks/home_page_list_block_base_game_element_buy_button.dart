@@ -20,7 +20,7 @@ class HomePageListBlockBaseGameElementBuyButton extends StatelessWidget {
               child: Text(text, style: AppThemeText.buttonLabel(fontWeight: FontWeight.bold), textAlign: TextAlign.center),
               style: AppButtonTheme.makeButtonStylePrimary(padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0)).copyWith(shape: AppButtonTheme.setButtonRadius(radius: 30)),
               onPressed: () async {
-                if (await canLaunch(hyperlinkUrl) == true) {
+                if (hyperlinkUrl.isNotEmpty && await canLaunch(hyperlinkUrl) == true) {
                   await launch(hyperlinkUrl);
                 }
               },

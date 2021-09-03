@@ -45,10 +45,10 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  # assets:
-  #   - lib/presentation/ui/assets/images/
-  #   - lib/presentation/ui/assets/images/logos/
-  #   - lib/presentation/ui/assets/images/icons/
+  assets:
+    - lib/presentation/ui/assets/images/
+  #  - lib/presentation/ui/assets/images/logos/
+    - lib/presentation/ui/assets/images/icons/
 
   fonts:
     - family: HelveticaNowDisplay-Light

@@ -5,7 +5,7 @@ class AppThemeText {
 
   static TextStyle h1({Color? color}) => TextStyle(fontFamily: "HelveticaNowDisplay-Medium", fontSize: 16, color: color);
   static TextStyle h2({Color? color}) => TextStyle(fontFamily: "HelveticaNowDisplay-Medium", fontSize: 14, color: color);
-  static TextStyle h3({Color? color}) => TextStyle(fontFamily: "HelveticaNowDisplay-Medium", fontSize: 12, color: color);
+  static TextStyle h3({Color? color}) => TextStyle(fontFamily: "HelveticaNowDisplay-Medium", fontSize: 11, color: color);
   static TextStyle inputText({Color? color}) => TextStyle(fontFamily: "HelveticaNowDisplay-Regular", fontSize: 12, color: color);
   static TextStyle buttonLabel({Color? color, FontWeight? fontWeight}) => TextStyle(fontFamily: "HelveticaNowDisplay-Bold", fontSize: 12, color: color, fontWeight: fontWeight);
   static TextStyle bodyP({Color? color, FontWeight? fontWeight}) => TextStyle(fontFamily: "HelveticaNowDisplay-Medium", fontSize: 12, color: color, fontWeight: fontWeight);

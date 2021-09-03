@@ -38,10 +38,10 @@ class HomePageListBlockBase extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: Container(color: Colors.yellow, height: 40, width: 100),
-                    ),
+                    // Align(
+                    //   alignment: Alignment.topRight,
+                    //   child: Container(color: Colors.yellow, height: 40, width: 100),
+                    // ),
                     Padding(
                       padding: EdgeInsets.only(top: 20),
                       child: ListView.builder(

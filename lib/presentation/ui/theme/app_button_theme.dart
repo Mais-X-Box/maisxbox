@@ -46,6 +46,21 @@ class AppButtonTheme {
     return buttonStyle;
   }
 
+  static ButtonStyle makeButtonStyleTransparent({TextStyle? textStyle, Color? textColor, Color? borderColor, Color? borderDisabledColor, Color? overlayColor}) {
+    ButtonStyle buttonStyle = TextButton.styleFrom(
+      primary: textColor ?? AppThemeColors.white,
+      backgroundColor: Colors.transparent,
+      onSurface: AppThemeColors.brownLight, //Text color when the button is disabled
+      padding: EdgeInsets.zero,
+    ).copyWith(
+        //backgroundColor: _setButtonBackgroundColor(enabledColor: Colors.transparent, disabledColor: Colors.transparent),
+        //overlayColor: _setButtonOverlayColor(enabledColor: overlayColor ?? AppThemeColors.green),
+        //side: _setButtonBorderSide(enabledColor: borderColor ?? AppThemeColors.white, disabledColor: borderDisabledColor ?? AppThemeColors.brownLight, borderWidth: 1), //Border
+        );
+
+    return buttonStyle;
+  }
+
   static MaterialStateProperty<Color?> _setButtonBackgroundColor({required Color enabledColor, required Color disabledColor}) {
     return MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
       if (states.contains(MaterialState.disabled)) return disabledColor;
