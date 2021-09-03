@@ -28,47 +28,61 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppThemeColors.white,
-      body: Center(
-        child: Container(
-          alignment: Alignment.topCenter,
-          constraints: BoxConstraints(maxWidth: 1000),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                HomePageHeader(),
-                HomePageMenu(presenter: this.widget.presenter),
-                HomePageHeaderMessage(),
-                HomePageSubHeader(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25).copyWith(right: 0),
-                            child: HomePageListBlockXboxStore(presenter: this.widget.presenter),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25).copyWith(right: 0),
-                            child: HomePageListBlockDealsWithGold(presenter: this.widget.presenter),
-                          ),
-                        ],
-                      ),
+      body: Column(
+        children: [
+          Stack(
+            children: [
+              Container(
+                width: double.infinity,
+                constraints: BoxConstraints(maxHeight: 388.5),
+                margin: EdgeInsets.only(top: 25),
+                color: AppThemeColors.black,
+              ),
+              Center(
+                child: Container(
+                  alignment: Alignment.topCenter,
+                  constraints: BoxConstraints(maxWidth: 1000),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        HomePageHeader(),
+                        HomePageMenu(presenter: this.widget.presenter),
+                        HomePageHeaderMessage(),
+                        HomePageSubHeader(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25).copyWith(right: 0),
+                                    child: HomePageListBlockXboxStore(presenter: this.widget.presenter),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25).copyWith(right: 0),
+                                    child: HomePageListBlockDealsWithGold(presenter: this.widget.presenter),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(top: 120),
+                              width: 180,
+                              child: HomePagePartners(this.widget.presenter),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                    Container(
-                      padding: EdgeInsets.only(top: 120),
-                      width: 180,
-                      child: HomePagePartners(this.widget.presenter),
-                    ),
-                  ],
+                  ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ),
+        ],
       ),
     );
   }
