@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 class AppThemeText {
   AppThemeText._();
 
-  static TextStyle h1({Color? color}) => TextStyle(fontFamily: "HelveticaNowDisplay-Medium", fontSize: 20, color: color);
-  static TextStyle h2({Color? color}) => TextStyle(fontFamily: "HelveticaNowDisplay-Medium", fontSize: 18, color: color);
-  static TextStyle h3({Color? color}) => TextStyle(fontFamily: "HelveticaNowDisplay-Medium", fontSize: 16, color: color);
-  static TextStyle inputText({Color? color}) => TextStyle(fontFamily: "HelveticaNowDisplay-Regular", fontSize: 16, color: color);
-  static TextStyle buttonLabel({Color? color, FontWeight? fontWeight}) => TextStyle(fontFamily: "HelveticaNowDisplay-Bold", fontSize: 16, color: color, fontWeight: fontWeight);
-  static TextStyle bodyP({Color? color, FontWeight? fontWeight}) => TextStyle(fontFamily: "HelveticaNowDisplay-Medium", fontSize: 16, color: color, fontWeight: fontWeight);
-  static TextStyle message({Color? color, FontWeight? fontWeight}) => TextStyle(fontFamily: "HelveticaNowDisplay-Medium", fontSize: 16, color: color, fontWeight: fontWeight);
-  static TextStyle inputLabel({Color? color}) => TextStyle(fontFamily: "HelveticaNowDisplay-Light", fontSize: 14, color: color);
+  static TextStyle h1({Color? color}) => TextStyle(fontFamily: "HelveticaNowDisplay-Medium", fontSize: 16, color: color);
+  static TextStyle h2({Color? color}) => TextStyle(fontFamily: "HelveticaNowDisplay-Medium", fontSize: 14, color: color);
+  static TextStyle h3({Color? color}) => TextStyle(fontFamily: "HelveticaNowDisplay-Medium", fontSize: 12, color: color);
+  static TextStyle inputText({Color? color}) => TextStyle(fontFamily: "HelveticaNowDisplay-Regular", fontSize: 12, color: color);
+  static TextStyle buttonLabel({Color? color, FontWeight? fontWeight}) => TextStyle(fontFamily: "HelveticaNowDisplay-Bold", fontSize: 12, color: color, fontWeight: fontWeight);
+  static TextStyle bodyP({Color? color, FontWeight? fontWeight}) => TextStyle(fontFamily: "HelveticaNowDisplay-Medium", fontSize: 12, color: color, fontWeight: fontWeight);
+  static TextStyle message({Color? color, FontWeight? fontWeight}) => TextStyle(fontFamily: "HelveticaNowDisplay-Medium", fontSize: 12, color: color, fontWeight: fontWeight);
+  static TextStyle inputLabel({Color? color}) => TextStyle(fontFamily: "HelveticaNowDisplay-Light", fontSize: 10, color: color);
 
   // static TextStyle h0({Color? color}) => TextStyle(fontFamily: "CircularStd-Black", fontSize: 50, color: color);
   // static TextStyle h1({Color? color}) => TextStyle(fontFamily: "CircularStd-Black", fontSize: 36, color: color);

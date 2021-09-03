@@ -3,18 +3,18 @@ import 'package:maisxbox/presentation/ui/theme/app_theme_text.dart';
 import 'package:maisxbox/presentation/ui/theme/app_theme_colors.dart';
 
 class AppButtonTheme {
-  static ButtonStyle makeButtonStylePrimary({TextStyle? textStyle}) {
+  static ButtonStyle makeButtonStylePrimary({TextStyle? textStyle, EdgeInsetsGeometry? padding}) {
     ButtonStyle buttonStyle = TextButton.styleFrom(
       backgroundColor: AppThemeColors.green,
-      primary: AppThemeColors.white,
+      primary: AppThemeColors.black,
       onSurface: AppThemeColors.brownLight, //Text color when the button is disabled
       minimumSize: Size(88, 52),
       textStyle: textStyle ?? null,
-      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+      padding: padding ?? EdgeInsets.symmetric(vertical: 12, horizontal: 20),
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8))),
     ).copyWith(
       backgroundColor: _setButtonBackgroundColor(enabledColor: AppThemeColors.green, disabledColor: AppThemeColors.greenDisabled),
-      overlayColor: _setButtonOverlayColor(enabledColor: AppThemeColors.brown),
+      overlayColor: _setButtonOverlayColor(enabledColor: AppThemeColors.greenLittleDark),
     );
 
     return buttonStyle;
@@ -67,6 +67,12 @@ class AppButtonTheme {
     return MaterialStateProperty.resolveWith<BorderSide?>((Set<MaterialState> states) {
       color = (states.contains(MaterialState.disabled)) ? disabledColor : enabledColor;
       return BorderSide(color: color, width: borderWidth);
+    });
+  }
+
+  static MaterialStateProperty<OutlinedBorder?> setButtonRadius({required double radius}) {
+    return MaterialStateProperty.resolveWith<OutlinedBorder?>((Set<MaterialState> states) {
+      return RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(radius))); // Defer to the button theme's default.
     });
   }
 }

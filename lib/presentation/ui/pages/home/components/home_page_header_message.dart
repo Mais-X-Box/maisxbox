@@ -7,7 +7,7 @@ class HomePageHeaderMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 20),
+      padding: EdgeInsets.symmetric(vertical: 10),
       width: double.infinity,
       color: Colors.white,
       child: Padding(

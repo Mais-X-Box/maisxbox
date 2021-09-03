@@ -9,15 +9,17 @@ class HomePageHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
+      constraints: BoxConstraints(maxHeight: 400),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [AppThemeColors.white, AppThemeColors.black],
-          stops: [0, 1],
+          stops: [0.07, 0],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
       ),
-      child: CachedNetworkImage(imageUrl: AppConfig.general.headerBannerPrincipalUrl ?? "", fit: BoxFit.cover),
+      child: CachedNetworkImage(imageUrl: AppConfig.general.headerBannerPrincipalUrl ?? "", fit: BoxFit.fitHeight),
     );
   }
 }

@@ -53,7 +53,7 @@ class HomePageListBlockBase extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               if (index == 0) Padding(padding: EdgeInsets.only(bottom: 10), child: makeGameHeader()),
-                              makeGameLine(this.list[index]),
+                              makeGameLine(this.list[index], index == this.list.length - 1),
                             ],
                           );
                         },
@@ -66,7 +66,7 @@ class HomePageListBlockBase extends StatelessWidget {
     );
   }
 
-  Widget makeGameLine(GameEntity? game) {
+  Widget makeGameLine(GameEntity? game, bool isLastItem) {
     Locale localePtBR = Locale.fromSubtags(languageCode: 'pt', countryCode: 'BR');
 
     return HomePageListBlockBaseGameElement(
@@ -74,10 +74,12 @@ class HomePageListBlockBase extends StatelessWidget {
       priceOriginal: game?.priceOriginal?.formatCurrencyValue(localePtBR),
       priceFinal: game?.priceFinal?.formatCurrencyValue(localePtBR),
       buy: "Comprar",
+      hyperlinkUrl: game?.hyperlinkUrl,
+      isLastItem: isLastItem,
     );
   }
 
   Widget makeGameHeader() {
-    return HomePageListBlockBaseGameElement(name: "Jogo", priceOriginal: "De", priceFinal: "Por", buy: "Link", isHeader: true);
+    return HomePageListBlockBaseGameElement(name: "Jogo", priceOriginal: "De", priceFinal: "Por", buy: "Link", isHeader: true, isLastItem: false);
   }
 }

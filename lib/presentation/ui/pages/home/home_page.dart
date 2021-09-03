@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Container(
                   padding: EdgeInsets.only(top: 120),
-                  width: 250,
+                  width: 180,
                   child: HomePagePartners(this.widget.presenter),
                 ),
               ],

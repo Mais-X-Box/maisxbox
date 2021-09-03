@@ -6,6 +6,7 @@ class AppThemeColors {
 
   static final Color white = HexColor.fromHex("#FFFFFF")!;
   static final Color green = HexColor.fromHex("#00E13A")!;
+  static final Color greenLittleDark = HexColor.fromHex("#00d136")!;
   static final Color greenDisabled = HexColor.fromHex("#95C9A3")!;
   static final Color black = HexColor.fromHex("#000000")!;
   static final Color yellow = HexColor.fromHex("#EEBB40")!;
