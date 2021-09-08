@@ -9,9 +9,11 @@ class HomePageHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.zero,
       width: double.infinity,
-      constraints: BoxConstraints(maxHeight: 400),
+      //constraints: BoxConstraints(maxHeight: 400),
       decoration: BoxDecoration(
+        color: AppThemeColors.black,
         gradient: LinearGradient(
           colors: [AppThemeColors.white, AppThemeColors.black],
           stops: [0.07, 0],
@@ -19,7 +21,8 @@ class HomePageHeader extends StatelessWidget {
           end: Alignment.bottomCenter,
         ),
       ),
-      child: CachedNetworkImage(imageUrl: AppConfig.general.headerBannerPrincipalUrl ?? "", fit: BoxFit.fitHeight),
+      //child: CachedNetworkImage(imageUrl: AppConfig.general.headerBannerPrincipalUrl ?? "", fit: BoxFit.fitHeight),
+      child: CachedNetworkImage(imageUrl: AppConfig.general.headerBannerPrincipalUrl ?? "", fit: BoxFit.contain),
     );
   }
 }

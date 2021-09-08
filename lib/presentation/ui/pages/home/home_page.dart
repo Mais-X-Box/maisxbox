@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:maisxbox/presentation/presenters/home/home_presenter.dart';
 import 'package:maisxbox/presentation/ui/pages/home/components/home_page_header.dart';
@@ -26,6 +27,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final isWebMobile = kIsWeb && (defaultTargetPlatform == TargetPlatform.iOS || defaultTargetPlatform == TargetPlatform.android);
+
     return Scaffold(
       backgroundColor: AppThemeColors.white,
       body: SingleChildScrollView(
@@ -33,48 +36,59 @@ class _HomePageState extends State<HomePage> {
           children: [
             Stack(
               children: [
-                Container(
-                  width: double.infinity,
-                  constraints: BoxConstraints(maxHeight: 388.5),
-                  margin: EdgeInsets.only(top: 25),
-                  color: AppThemeColors.black,
-                ),
+                // Container(
+                //   width: double.infinity,
+                //   constraints: BoxConstraints(maxHeight: 388.5),
+                //   margin: EdgeInsets.only(top: 25),
+                //   color: AppThemeColors.black,
+                // ),
                 Center(
                   child: Container(
                     alignment: Alignment.topCenter,
-                    constraints: BoxConstraints(maxWidth: 1000),
+                    //constraints: BoxConstraints(maxWidth: 1000),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         HomePageHeader(),
                         HomePageMenu(presenter: this.widget.presenter),
                         HomePageHeaderMessage(),
                         HomePageSubHeader(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25).copyWith(right: 0),
-                                    child: HomePageListBlockXboxStore(presenter: this.widget.presenter),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25).copyWith(right: 0),
-                                    child: HomePageListBlockDealsWithGold(presenter: this.widget.presenter),
-                                  ),
-                                ],
+                        Container(
+                          constraints: BoxConstraints(maxWidth: 1000),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25).copyWith(right: isWebMobile ? null : 0),
+                                      child: HomePageListBlockXboxStore(presenter: this.widget.presenter),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25).copyWith(right: isWebMobile ? null : 0),
+                                      child: HomePageListBlockDealsWithGold(presenter: this.widget.presenter),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.only(top: 120),
-                              width: 180,
-                              child: HomePagePartners(this.widget.presenter),
-                            ),
-                          ],
+                              if (!isWebMobile)
+                                Container(
+                                  padding: EdgeInsets.only(top: 120),
+                                  width: 180,
+                                  child: HomePagePartners(this.widget.presenter),
+                                ),
+                            ],
+                          ),
                         ),
+                        if (isWebMobile)
+                          Container(
+                            padding: EdgeInsets.only(top: 20),
+                            width: 180,
+                            child: HomePagePartners(this.widget.presenter),
+                          ),
                       ],
                     ),
                   ),
