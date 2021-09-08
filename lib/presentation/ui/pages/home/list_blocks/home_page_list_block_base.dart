@@ -26,7 +26,7 @@ class HomePageListBlockBase extends StatelessWidget {
           child: Text(title, style: AppThemeText.buttonLabel(color: AppThemeColors.green, fontWeight: FontWeight.bold), textAlign: TextAlign.center),
         ),
         Padding(
-          padding: EdgeInsets.only(left: 2, top: 8, bottom: 30),
+          padding: EdgeInsets.only(left: 2, top: 8, bottom: 10),
           child: Text(subtitle, style: AppThemeText.h1()),
         ),
         this.isLoading
