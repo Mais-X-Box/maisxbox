@@ -21,7 +21,7 @@ class HomePageListBlockBaseGameElement extends StatelessWidget {
         children: [
           Row(
             children: [
-              Expanded(child: Text(name ?? "", style: AppThemeText.bodyP(), overflow: TextOverflow.ellipsis)),
+              Expanded(child: Text(name ?? "", style: AppThemeText.bodyP())),
               Container(
                 width: 85,
                 padding: EdgeInsets.symmetric(horizontal: 5),

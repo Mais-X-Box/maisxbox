@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:maisxbox/presentation/ui/theme/theme.dart';
 
@@ -12,7 +13,12 @@ class HomePageHeaderMessage extends StatelessWidget {
       color: Colors.white,
       child: Padding(
         padding: AppTheme.defaultPaddingHorizontal,
-        child: Text("Confira as ofertas da semana oficiais da Microsoft para o seu Xbox:", style: AppThemeText.h2()),
+        child: AutoSizeText(
+          "Confira as ofertas da semana oficiais da Microsoft para o seu Xbox:",
+          minFontSize: 4,
+          style: AppThemeText.h2(),
+          maxLines: 1,
+        ),
       ),
     );
   }
